@@ -22,7 +22,7 @@ namespace crud.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                string Constr = "server=localhost;database=Crud;user=root;password=Abc@12345;TreatTinyAsBoolean=true;";
+                string Constr = "server=localhost;database=Crud;user=root;password=;TreatTinyAsBoolean=true;";
                 optionsBuilder.UseMySql(Constr, o => o.EnableRetryOnFailure());
             }
         }

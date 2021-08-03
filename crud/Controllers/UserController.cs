@@ -34,13 +34,13 @@ namespace crud.Controllers
         {
             TBL_USER User = new TBL_USER();
             // select * from TBL_USER where UserId = UserId
-            User = _db.TBL_USER.Where(o => o.UserId == UserId).FirstOrDefault();
+            User = _db.TBL_USER.FirstOrDefault(o => o.UserId == UserId);
             return View(User);//ส่งข้อมูลที่ View/User/Edit
         }
         public IActionResult Update(TBL_USER _user)
         {
             TBL_USER User = new TBL_USER();
-            User = _db.TBL_USER.Where(o => o.UserId == _user.UserId).FirstOrDefault();
+            User = _db.TBL_USER.FirstOrDefault(o => o.UserId == _user.UserId);
             if (User != null)
             {
                 //เอาข้อมูลใหม่แทนที่ข้อมูลเดิม
@@ -70,7 +70,7 @@ namespace crud.Controllers
         public IActionResult Delete(int UserId)
         {
             TBL_USER User = new TBL_USER();
-            User = _db.TBL_USER.Where(o => o.UserId == UserId).FirstOrDefault();
+            User = _db.TBL_USER.FirstOrDefault(o => o.UserId == UserId);
             _db.TBL_USER.Remove(User);
             _db.SaveChanges();
             return RedirectToAction("List");

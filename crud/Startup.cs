@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using crud.Repository;
+using crud.Service;
 
 namespace crud
 {
@@ -26,8 +28,11 @@ namespace crud
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            string MySQLCon = "server=localhost;database=Crud;user=root;password=Abc@12345;TreatTinyAsBoolean=true;";
+            string MySQLCon = "server=localhost;database=Crud;user=root;password=;TreatTinyAsBoolean=true;";
             services.AddDbContext<MySQLContext>(option => option.UseLazyLoadingProxies().UseMySql(MySQLCon));
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
